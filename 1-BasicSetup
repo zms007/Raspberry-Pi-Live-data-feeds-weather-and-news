@@ -33,24 +33,34 @@ import requests
 
 app = Flask(__name__)
 
-# Replace these with your API keys
+# Replace with your own API keys
 OPENWEATHERMAP_API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY'
 NEWSAPI_KEY = 'YOUR_NEWSAPI_KEY'
 
-@app.route('/')
-def home():
-    # Fetch Weather Data
-    weather_url = f"http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid={OPENWEATHERMAP_API_KEY}"
+# Replace with your desired location
+LOCATION = 'Kuala Lumpur'
+
+def get_weather():
+    # Example API call for weather data
+    weather_url = f'http://api.openweathermap.org/data/2.5/weather?q={LOCATION}&appid={WEATHER_API_KEY}&units=metric'
     weather_data = requests.get(weather_url).json()
-    
-    # Fetch News Data
-    news_url = f"https://newsapi.org/v2/top-headlines?country=us&apiKey={NEWSAPI_KEY}"
+    return f"{weather_data['name']}: {weather_data['main']['temp']}°C, {weather_data['weather'][0]['description']}"
+
+def get_news():
+    # Example API call for news data
+    news_url = f'https://newsapi.org/v2/top-headlines?country=us&apiKey={NEWS_API_KEY}'
     news_data = requests.get(news_url).json()
-    
-    return render_template('index.html', weather=weather_data, news=news_data)
+    headlines = [article['title'] for article in news_data['articles'][:5]]
+    return headlines
+
+@app.route('/')
+def index():
+    weather = get_weather()
+    news = get_news()
+    return render_template('index.html', weather=weather, news=news)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True)
 ```
 
 ### Step 3: Create a Simple Webpage to Display Data
@@ -68,7 +78,11 @@ Here's a very simple example:
     <p>{{ weather }}</p>
     
     <h1>News Data</h1>
-    <p>{{ news }}</p>
+    <ul>
+        {% for headline in news %}
+            <li>{{ headline }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
 ```
