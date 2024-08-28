@@ -95,6 +95,6 @@ Make sure your Raspberry Pi and Android tablet are connected to the same network
    ```
 
 ### Step 5: Access the Webpage on Your Android Tablet
-Open a web browser on your Android tablet and navigate to the Raspberry Pi's IP address followed by `:8080` (e.g., `http://192.168.1.2:8080`). You should see the live weather and news data displayed.
+Open a web browser on your Android tablet and navigate to the Raspberry Pi's IP address followed by `:5000` (e.g., `http://192.168.1.2:5000`). You should see the live weather and news data displayed.
 
 **Note:** This project is a basic example and can be expanded in several ways, such as improving the webpage design, adding more data sources, or implementing real-time data updates using AJAX. Additionally, ensure you comply with the APIs' terms of use when using them.
