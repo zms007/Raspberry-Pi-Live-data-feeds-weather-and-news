@@ -10,6 +10,11 @@ For your project, we'll create a basic outline for a Raspberry Pi setup that fet
     - For simplicity, we'll use a web server running on the Raspberry Pi to display the data.
     - The Android tablet will access this web server using a browser to view the live data.
 
+2.1 **Install Apache (web server running on the Raspberry Pi to display the data)**
+    ```
+    sudo apt-get install apache2 -y    
+    ```
+
 ### Hardware Requirements:
 - Raspberry Pi (with Raspbian OS installed and internet connectivity configured)
 - Android Tablet
