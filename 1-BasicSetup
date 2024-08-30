@@ -39,8 +39,8 @@ import requests
 app = Flask(__name__)
 
 # Replace with your own API keys
-OPENWEATHERMAP_API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY'
-NEWSAPI_KEY = 'YOUR_NEWSAPI_KEY'
+WEATHER_API_KEY = 'YOUR_WEATHER_API_KEY'
+NEWS_API_KEY = 'YOUR_NEWS_API_KEY'
 
 # Replace with your desired location
 LOCATION = 'Kuala Lumpur'
